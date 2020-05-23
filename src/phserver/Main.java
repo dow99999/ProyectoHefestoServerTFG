@@ -98,6 +98,7 @@ public class Main {
           outm.writeFloat(in.readFloat());
           outm.writeFloat(in.readFloat());
           outm.writeInt(in.readInt());
+          outm.writeInt(in.readInt());
         }
       } catch (IOException ex) {
       } catch (InterruptedException ex) {
@@ -148,6 +149,7 @@ public class Main {
         while(serverOpen){
           out2.writeFloat(in.readFloat());
           out2.writeFloat(in.readFloat());
+          out2.writeInt(in.readInt());
           out2.writeInt(in.readInt());
         }
         
