@@ -65,6 +65,8 @@ public class Main {
     private DataOutputStream outm;
     private DataInputStream inm;
 
+    private long ping;
+    
     ServerClient(ServerSocket s, Socket[] c) {
       m_server = s;
       m_clients = c;
@@ -93,12 +95,14 @@ public class Main {
         outm.writeFloat(in.readFloat());
         outm.writeFloat(in.readFloat());
         outm.writeInt(in.readInt());
-        
         while(serverOpen){
+          ping = System.currentTimeMillis();
           outm.writeFloat(in.readFloat());
           outm.writeFloat(in.readFloat());
           outm.writeInt(in.readInt());
           outm.writeInt(in.readInt());
+          ping = System.currentTimeMillis() - ping;
+          System.out.println("Ping client 1: " + ping + "ms");
         }
       } catch (IOException ex) {
       } catch (InterruptedException ex) {
@@ -116,6 +120,8 @@ public class Main {
     private DataOutputStream out2;
     private DataInputStream in2;
 
+    private long ping;
+    
     ServerClientMain(ServerSocket s, Socket[] c) {
       m_server = s;
       m_clients = c;
@@ -147,10 +153,13 @@ public class Main {
         out2.writeInt(in.readInt());
         
         while(serverOpen){
+          ping = System.currentTimeMillis();
           out2.writeFloat(in.readFloat());
           out2.writeFloat(in.readFloat());
           out2.writeInt(in.readInt());
           out2.writeInt(in.readInt());
+          ping = System.currentTimeMillis() - ping;
+          System.out.println("Ping client 0: " + ping + "ms");
         }
         
       } catch (IOException ex) {
