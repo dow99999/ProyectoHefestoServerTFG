@@ -37,17 +37,14 @@ public class Main {
 
       clientThreadMain.start();
       clientThread2.start();
-      System.out.println("Listening on port 27827...");
+      System.out.println("Listening on port 27827... Enter 'quit' to close the server");
       String output;
       do{
         output = br.readLine();
       }while(!output.toLowerCase().equals("quit"));
       serverOpen = false;
       Thread.sleep(100);
-      m_clients.notifyAll();
-      clientThread2.interrupt();
-      clientThreadMain.interrupt();
-      
+      ss.close();
     } catch (IOException ex) {
       System.out.println(ex.getMessage());
     } catch (InterruptedException ex) {
