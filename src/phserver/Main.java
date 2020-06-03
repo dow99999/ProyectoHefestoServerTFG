@@ -98,7 +98,7 @@ public class Main {
           outm.writeFloat(in.readFloat());
           outm.writeInt(in.readInt());
           outm.writeInt(in.readInt());
-          ping = System.currentTimeMillis() - ping;
+          ping = System.currentTimeMillis() - ping - (1000/60);
           System.out.println("Ping client 1: " + ping + "ms");
         }
       } catch (IOException ex) {
